@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import ContactList from '../book-list/book-list';
+import BookList from '../book-list/book-list';
 import withLayout from '../hocs/with-layout';
 
 import MainEmpty from '../main-empty/main-empty';
-import {getBooks} from '../../store/books/selectors';
+import { getBooks } from '../../store/books/selectors';
 
 function Main() {
   const books = useSelector(getBooks);
-  console.log(books)
 
   useEffect(() => {
   }, [books])
@@ -27,12 +26,12 @@ function Main() {
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Books</h2>
                   <b className="places__found">{books.length} books </b>
-                  {/* <ContactList
+                  <BookList
                     items={books}
                     // first page number
                     initialPageNumber={0}
                     activeBooks={books}
-                  /> */}
+                  />
                 </section>
               </div>
             </div>

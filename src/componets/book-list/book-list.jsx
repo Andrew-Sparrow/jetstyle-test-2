@@ -1,6 +1,6 @@
 // import React, {useState} from 'react';
-import React, {useReducer, useEffect} from 'react';
-import {Fragment} from 'react';
+import React, { useReducer, useEffect } from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import Book from '../book/book';
@@ -11,7 +11,7 @@ const FIRST_PAGE_NUMBER = 0; // the initialPageNumber starts with zero
 const ITEMS_PER_PAGE = 3;
 let prevBooks = [];
 
-function ContactList(props) {
+function BookList(props) {
   const {
     items,
     initialPageNumber,
@@ -33,9 +33,9 @@ function ContactList(props) {
   const reducer = (state, action) => {
     switch (action.type) {
       case 'changePageNumber':
-        return {...state, pageNumber: action.payload};
+        return { ...state, pageNumber: action.payload };
       case 'changeSlicedItems':
-        return {...state, slicedItems: action.payload};
+        return { ...state, slicedItems: action.payload };
       default:
         throw new Error();
     }
@@ -45,9 +45,9 @@ function ContactList(props) {
 
   useEffect(() => {
     if (prevBooks !== activeBooks) {
-      dispatch({type: 'changeSlicedItems', payload: []});
-      dispatch({type: 'changeSlicedItems', payload: slicedItems});
-      dispatch({type: 'changePageNumber', payload: FIRST_PAGE_NUMBER});
+      dispatch({ type: 'changeSlicedItems', payload: [] });
+      dispatch({ type: 'changeSlicedItems', payload: slicedItems });
+      dispatch({ type: 'changePageNumber', payload: FIRST_PAGE_NUMBER });
     }
     prevBooks = activeBooks;
   }, [slicedItems, activeBooks]);
@@ -56,13 +56,13 @@ function ContactList(props) {
   const pageNumberClickHandler = (dataPagination) => {
     let offset = Math.ceil(dataPagination.selected * ITEMS_PER_PAGE);
     slicedItems = items.slice(offset, offset + ITEMS_PER_PAGE);
-    dispatch({type: 'changePageNumber', payload: dataPagination.selected});
-    dispatch({type: 'changeSlicedItems', payload: slicedItems});
+    dispatch({ type: 'changePageNumber', payload: dataPagination.selected });
+    dispatch({ type: 'changeSlicedItems', payload: slicedItems });
   };
 
   return (
     <Fragment>
-      <ul className="cities__places-list places__list tabs__content">
+      <ul className="cities__places-list">
         {state.slicedItems.map((book) => (
           <Book
             key={book.id}
@@ -85,11 +85,11 @@ function ContactList(props) {
   );
 }
 
-ContactList.propTypes = {
+BookList.propTypes = {
   items: PropTypes.arrayOf(contactProp),
   initialPageNumber: PropTypes.number,
   activeState: PropTypes.array,
   onListItemHover: PropTypes.func,
 };
 
-export default ContactList;
+export default BookList;
