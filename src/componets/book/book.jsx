@@ -23,23 +23,23 @@ function Book(props) {
 
   return (
     <li
-      className="contact"
+      className="card"
       id={id}
     >
-      <img className="contact__left" src={img === null ? defaultImg : img} alt="avatar"></img>
-      <div className="contact__right">
-        <p className="contact__data">Book Title: <span className="contact__name">{title}</span></p>
-        <p className="contact__data">Author: <span className="contact__name">{author}</span></p>
+      <img className="card__left" src={img === null ? defaultImg : img} alt="avatar"></img>
+      <div className="card__right">
+        <p className="card__data">Book Title: <span className="card__name">{title}</span></p>
+        <p className="card__data">Author: <span className="card__name">{author}</span></p>
       </div>
-      <div className="contact__buttons">
-        <button className="contact__bookmark-button button" type="button">
-          <svg className="contact__edit-icon" width="30" height="30">
+      <div className="card__buttons">
+        <button className="card__bookmark-button button" type="button">
+          <svg className="card__edit-icon" width="30" height="30">
             <use xlinkHref="#icon-pencil"></use>
           </svg>
           <span className="visually-hidden">Edit</span>
         </button>
-        <button className="contact__bookmark-button button" type="button" onClick={onDeleteClick}>
-          <svg className="contact__bookmark-icon" width="30" height="30">
+        <button className="card__bookmark-button button" type="button" onClick={onDeleteClick}>
+          <svg className="card__bookmark-icon" width="30" height="30">
             <use xlinkHref="#icon-delete"></use>
           </svg>
           <span className="visually-hidden">Delete</span>

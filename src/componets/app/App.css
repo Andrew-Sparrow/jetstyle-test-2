@@ -323,7 +323,7 @@ img {
   margin-bottom: 24px
 }
 
-.contact {
+.card {
   display: flex;
   min-width: 330px;
   border: 5px solid #4481c3;
@@ -332,25 +332,29 @@ img {
   min-height: 225px;
 }
 
-.contact__left {
+.card__data {
+  margin-bottom: 20px;
+}
+
+.card__left {
   width: 150px;
   background-color: #f5f5f5;
   object-fit: cover;
 }
 
-.contact__right {
+.card__right {
   padding-left: 20px;
   padding-right: 20px;
   flex-grow: 1;
   padding-top: 26px;
 }
 
-.contact__name {
+.card__name {
   font-weight: 600;
   font-size: 18px;
 }
 
-.contact__buttons {
+.card__buttons {
   width: 115px;
   display: flex;
   justify-content: space-between;
@@ -384,15 +388,15 @@ img {
   background-color: #cfcfcf;
 }
 
-.contact__bookmark-button {
+.card__bookmark-button {
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: 100%;
   min-height: 75px;
 }
 
-.contact__edit-icon,
-.contact__bookmark-icon {
+.card__edit-icon,
+.card__bookmark-icon {
   fill: none;
   stroke: #979797;
   stroke-width: 2;

@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import Book from '../book/book';
-import contactProp from '../book/book.prop';
+import CardProp from '../book/book.prop';
 import Pagination from '../pagination/pagination';
 
 const FIRST_PAGE_NUMBER = 0; // the initialPageNumber starts with zero
@@ -86,7 +86,7 @@ function BookList(props) {
 }
 
 BookList.propTypes = {
-  items: PropTypes.arrayOf(contactProp),
+  items: PropTypes.arrayOf(CardProp),
   initialPageNumber: PropTypes.number,
   activeState: PropTypes.array,
   onListItemHover: PropTypes.func,
