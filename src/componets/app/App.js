@@ -7,7 +7,7 @@ import {
 import './App.css';
 import { books } from '../../books-db';
 import WithLayoutMain from '../main/main'
-import WithLayoutForm from '../new-book-form/new-book-form'
+import WithLayoutForm from '../book-form/book-form'
 import { AppRoute } from '../../const'
 import NotFound from '../not-found/not-found'
 

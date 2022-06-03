@@ -3,7 +3,8 @@ import Util from '../../util/util';
 
 import {
   deleteItemAction,
-  addItemAction
+  addItemAction,
+  editItemAction
 } from '../actions';
 
 const initialState = {
@@ -14,6 +15,11 @@ const books = createReducer(initialState, (builder) => {
   builder
     .addCase(deleteItemAction, (state, action) => {
       const newBookList = Util.deleteItem(action.payload, state.books);
+      state.books = newBookList;
+      localStorage.setItem('books', JSON.stringify(newBookList))
+    })
+    .addCase(editItemAction, (state, action) => {
+      const newBookList = Util.editItem(action.payload, state.books);
       state.books = newBookList;
       localStorage.setItem('books', JSON.stringify(newBookList))
     })

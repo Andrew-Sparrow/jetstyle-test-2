@@ -1,31 +1,47 @@
 import { useEffect, useState} from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  useNavigate,
+  useMatch,
+} from "react-router-dom";
+
+
 import { customAlphabet } from 'nanoid'
 
 import withLayout from '../hocs/with-layout';
 import SubmitButton from '../submit-button/submit-button';
 import { AppRoute } from '../../const';
-import { addItemAction } from '../../store/actions';
+import { addItemAction, editItemAction } from '../../store/actions';
+import { getBooks } from '../../store/books/selectors'
 
 const ErrorMessage = {
   TITLE: "Введите название книги!",
   AUTHOR: "Введите имя автора!"
 };
 
-const NewBookForm = () => {
+const BookForm = () => {
   const dispatch = useDispatch();
+  const match = useMatch('/edit/:id');
+  const id = match?.params.id;
+
+  const books = useSelector(getBooks);
 
   let navigate = useNavigate();
 
   const nanoID = customAlphabet('1234567890', 5)
 
-  const [formData, setFormData] = useState({
+  let book = {
     id: parseInt(nanoID(), 10),
     img: null,
     title: '',
     author: ''
-  });
+  };
+
+  if (id) {
+    book = books.find((book) => book.id === +id);
+  }
+
+  const [formData, setFormData] = useState(book);
 
   const [formErrors, setFormErrors] = useState({
     title: '',
@@ -37,10 +53,13 @@ const NewBookForm = () => {
     const formErrorsValidation = isFormValid();
     setFormErrors(formErrorsValidation);
     if (Object.keys(formErrorsValidation).length === 0) {
-      dispatch(addItemAction(formData));
-      console.log('admit');
+      if (match) {
+        dispatch(editItemAction(formData))
+      } else {
+        dispatch(addItemAction(formData));
+      }
       setFormData({
-        id: nanoID(),
+        id: null,
         img: null,
         title: '',
         author: ''
@@ -79,7 +98,7 @@ const NewBookForm = () => {
     <div className="books">
       <div className="books__items-container container">
         <section className="books__items form">
-          <h2 className="form__title">Add New Book</h2>
+          <h2 className="form__title">{match ? 'Edit Book' : 'Add Book'}</h2>
           <fieldset style={{border: 'none'}}>
             <form
               className="form"
@@ -105,7 +124,7 @@ const NewBookForm = () => {
                 name="author"
               />
               <p className="reviews__error">{formErrors.author}</p>
-              <SubmitButton />
+              <SubmitButton isEdit={match} />
             </form>
           </fieldset>
         </section>
@@ -114,5 +133,5 @@ const NewBookForm = () => {
   );
 };
 
-const withLayoutFormAdd = withLayout(NewBookForm);
+const withLayoutFormAdd = withLayout(BookForm);
 export default withLayoutFormAdd;

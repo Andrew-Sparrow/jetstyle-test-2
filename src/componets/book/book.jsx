@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+
 import { deleteItemAction } from '../../store/actions';
 
 import {defaultImg} from '../../const';
@@ -14,6 +16,7 @@ function Book(props) {
   } = props;
 
   const dispatch = useDispatch();
+  let navigate = useNavigate();
 
   const onDeleteClick = (evt) => {
     evt.preventDefault();
@@ -22,6 +25,7 @@ function Book(props) {
 
   const onEditClick = (evt) => {
     evt.preventDefault();
+    navigate(`/edit/${id}`);
   };
 
   return (

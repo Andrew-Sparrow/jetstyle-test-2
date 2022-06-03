@@ -1,13 +1,13 @@
 import React from 'react';
 
 
-const SubmitButton = () => {
+const SubmitButton = ({ isEdit }) => {
 
   return (
     <button
       className={`press-button press-button__submit`}
       type="submit"
-    >Add New Book</button>
+    >{isEdit ? 'Edit Book': 'Add New Book'}</button>
   );
 };
 
