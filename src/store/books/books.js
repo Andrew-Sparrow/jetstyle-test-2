@@ -12,7 +12,9 @@ const initialState = {
 const books = createReducer(initialState, (builder) => {
   builder
     .addCase(deleteItemAction, (state, action) => {
-      state.books = Util.deleteItem(action.payload, state.books);
+      const newBookList = Util.deleteItem(action.payload, state.books);
+      state.books = newBookList;
+      localStorage.setItem('books', newBookList)
     })
 });
 

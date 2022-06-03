@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { deleteItemAction } from '../../store/actions';
 
 import {defaultImg} from '../../const';
-// import {deleteItemApi} from '../../store/api-actions';
 
 function Book(props) {
   const {
@@ -17,8 +17,7 @@ function Book(props) {
 
   const onDeleteClick = (evt) => {
     evt.preventDefault();
-    console.log('delete');
-    // dispatch(deleteItemApi(id));
+    dispatch(deleteItemAction(id));
   };
 
   return (
