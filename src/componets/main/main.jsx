@@ -21,11 +21,11 @@ function Main() {
         books.length === 0
           ? <MainEmpty />
           : (
-            <div className="cities">
-              <div className="cities__places-container container">
-                <section className="cities__places places">
+            <div className="books">
+              <div className="books__items-container container">
+                <section className="books__items items">
                   <h2 className="visually-hidden">Books</h2>
-                  <b className="places__found">{books.length} books </b>
+                  <b className="items__found">{books.length} books </b>
                   <BookList
                     items={books}
                     // first page number

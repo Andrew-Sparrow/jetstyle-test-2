@@ -62,7 +62,7 @@ function BookList(props) {
 
   return (
     <Fragment>
-      <ul className="cities__places-list">
+      <ul className="books__items-list">
         {state.slicedItems.map((book) => (
           <Book
             key={book.id}
