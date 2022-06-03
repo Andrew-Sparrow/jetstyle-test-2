@@ -20,6 +20,10 @@ function Book(props) {
     dispatch(deleteItemAction(id));
   };
 
+  const onEditClick = (evt) => {
+    evt.preventDefault();
+  };
+
   return (
     <li
       className="card"
@@ -31,13 +35,21 @@ function Book(props) {
         <p className="card__data">Author: <span className="card__name">{author}</span></p>
       </div>
       <div className="card__buttons">
-        <button className="card__bookmark-button button" type="button">
+        <button
+          className="card__bookmark-button button"
+          type="button"
+          onClick={onEditClick}
+        >
           <svg className="card__edit-icon" width="30" height="30">
             <use xlinkHref="#icon-pencil"></use>
           </svg>
           <span className="visually-hidden">Edit</span>
         </button>
-        <button className="card__bookmark-button button" type="button" onClick={onDeleteClick}>
+        <button
+          className="card__bookmark-button button"
+          type="button"
+          onClick={onDeleteClick}
+        >
           <svg className="card__bookmark-icon" width="30" height="30">
             <use xlinkHref="#icon-delete"></use>
           </svg>

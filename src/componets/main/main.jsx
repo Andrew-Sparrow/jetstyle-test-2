@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import BookList from '../book-list/book-list';
 import withLayout from '../hocs/with-layout';
+import NewItemButton from '../new-item-button/new-item-button';
 
 import MainEmpty from '../main-empty/main-empty';
 import { getBooks } from '../../store/books/selectors';
@@ -25,6 +26,7 @@ function Main() {
               <div className="books__items-container container">
                 <section className="books__items items">
                   <h2 className="visually-hidden">Books</h2>
+                  <NewItemButton />
                   <b className="items__found">{books.length} books </b>
                   <BookList
                     items={books}

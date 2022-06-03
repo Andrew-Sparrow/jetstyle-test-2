@@ -2,7 +2,8 @@ import { createReducer } from '@reduxjs/toolkit';
 import Util from '../../util/util';
 
 import {
-  deleteItemAction
+  deleteItemAction,
+  addItemAction
 } from '../actions';
 
 const initialState = {
@@ -14,7 +15,12 @@ const books = createReducer(initialState, (builder) => {
     .addCase(deleteItemAction, (state, action) => {
       const newBookList = Util.deleteItem(action.payload, state.books);
       state.books = newBookList;
-      localStorage.setItem('books', newBookList)
+      localStorage.setItem('books', JSON.stringify(newBookList))
+    })
+    .addCase(addItemAction, (state, action) => {
+      const newBookList = [action.payload, ...state.books];
+      state.books = newBookList;
+      localStorage.setItem('books', JSON.stringify(newBookList))
     })
 });
 

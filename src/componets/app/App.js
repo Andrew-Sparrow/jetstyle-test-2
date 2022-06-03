@@ -7,7 +7,9 @@ import {
 import './App.css';
 import { books } from '../../books-db';
 import WithLayoutMain from '../main/main'
+import WithLayoutForm from '../new-book-form/new-book-form'
 import { AppRoute } from '../../const'
+import NotFound from '../not-found/not-found'
 
 
 localStorage.setItem('books', JSON.stringify(books));
@@ -17,6 +19,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path={AppRoute.MAIN} element={<WithLayoutMain />} />
+        <Route path={AppRoute.ADD} element={<WithLayoutForm />} />
+        <Route path={AppRoute.EDIT} element={<WithLayoutForm />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
