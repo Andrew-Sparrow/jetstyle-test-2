@@ -13,7 +13,6 @@ const FileUploader = (props) => {
 
   const handleChange = event => {
     const fileUploaded = event.target.files[0];
-    console.log('fileUploaded', fileUploaded);
 
     let errorsList = [];
 
@@ -32,18 +31,15 @@ const FileUploader = (props) => {
         && fileUploaded?.type !== "image/png"
         && fileUploaded?.type !== "image/jpeg"
       ) {
-        console.log('fileUploadedType', fileUploaded?.type === "image/jpeg");
           errorsList.push("File type should be 'png' or 'jpg' or 'jpeg'");
         }
 
-      console.log(errorsList);
       handleFileError(errorsList);
 
     } else {
       errorsList = []
       handleFileError(errorsList);
       setImage(URL.createObjectURL(fileUploaded));
-      console.log('fileUploaded', fileUploaded);
     }
   };
 
