@@ -1,10 +1,13 @@
-import { useEffect, useState} from 'react';
+import {
+  useEffect,
+  useState,
+} from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import {
   useNavigate,
   useMatch,
 } from "react-router-dom";
-
 
 import { customAlphabet } from 'nanoid'
 
@@ -13,10 +16,11 @@ import SubmitButton from '../submit-button/submit-button';
 import { AppRoute } from '../../const';
 import { addItemAction, editItemAction } from '../../store/actions';
 import { getBooks } from '../../store/books/selectors'
+import { FileUploader } from '../file-uploader/file-uploader'
 
 const ErrorMessage = {
-  TITLE: "Введите название книги!",
-  AUTHOR: "Введите имя автора!"
+  TITLE: "Enter book title!",
+  AUTHOR: "Enter author name!"
 };
 
 const BookForm = () => {
@@ -42,16 +46,24 @@ const BookForm = () => {
   }
 
   const [formData, setFormData] = useState(book);
+  const [pictureErrors, setPictureErrors] = useState([]);
 
   const [formErrors, setFormErrors] = useState({
     title: '',
-    author: ''
+    author: '',
+    picture: ''
   });
+
+  const handleFileError = (errArray) => {
+    setPictureErrors(errArray)
+  }
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const formErrorsValidation = isFormValid();
+
     setFormErrors(formErrorsValidation);
+
     if (Object.keys(formErrorsValidation).length === 0) {
       if (match) {
         dispatch(editItemAction(formData))
@@ -80,6 +92,9 @@ const BookForm = () => {
     }
     if (!formData.author) {
       errors.author = ErrorMessage.AUTHOR;
+    }
+    if (pictureErrors.length !== 0) {
+      errors.picture = pictureErrors.join(', ');
     }
     return errors;
   };
@@ -124,6 +139,14 @@ const BookForm = () => {
                 name="author"
               />
               <p className="reviews__error">{formErrors.author}</p>
+
+              {!match && (
+                <>
+                  <FileUploader handleFileError={handleFileError} />
+                  <p className="reviews__error">{formErrors.picture}</p>
+                </>
+              )}
+
               <SubmitButton isEdit={match} />
             </form>
           </fieldset>

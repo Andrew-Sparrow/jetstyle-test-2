@@ -597,7 +597,7 @@ img {
 
 .press-button {
   display: block;
-  width: 231px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
@@ -611,6 +611,13 @@ img {
   text-align: center;
   -webkit-transform: skew(-15.5deg);
   transform: skew(-15.5deg);
+}
+
+.press-button--upload {
+  width: 200px;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: auto;
 }
 
 .press-button:hover {
