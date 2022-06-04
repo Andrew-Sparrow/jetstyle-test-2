@@ -11,8 +11,9 @@ import WithLayoutForm from '../book-form/book-form'
 import { AppRoute } from '../../const'
 import NotFound from '../not-found/not-found'
 
-
-localStorage.setItem('books', JSON.stringify(books));
+if (!localStorage.getItem('books')) {
+  localStorage.setItem('books', JSON.stringify(books));
+}
 
 function App() {
   return (

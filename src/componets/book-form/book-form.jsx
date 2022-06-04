@@ -100,14 +100,21 @@ const BookForm = () => {
   };
 
   const handleInputChange = (evt) => {
-    const value = evt.target.value;
     const name = evt.target.name;
+    const value = evt.target.value;
 
     setFormData({
       ...formData,
       [name]: value
     });
   };
+
+  const handleAddPicture = (picture) => {
+    setFormData({
+      ...formData,
+      img: picture
+    });
+  }
 
   return (
     <div className="books">
@@ -142,7 +149,10 @@ const BookForm = () => {
 
               {!match && (
                 <>
-                  <FileUploader handleFileError={handleFileError} />
+                  <FileUploader
+                    handleFileError={handleFileError}
+                    handleAddPicture={handleAddPicture}
+                  />
                   <p className="reviews__error">{formErrors.picture}</p>
                 </>
               )}

@@ -4,4 +4,4 @@ export const AppRoute = {
   EDIT: '/edit/:id'
 };
 
-export const defaultImg = 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png';
+export const defaultImgPath = 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png';

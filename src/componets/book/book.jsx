@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { deleteItemAction } from '../../store/actions';
 
-import {defaultImg} from '../../const';
+import { defaultImgPath } from '../../const';
 
 function Book(props) {
   const {
@@ -25,7 +25,7 @@ function Book(props) {
 
   const onEditClick = (evt) => {
     evt.preventDefault();
-    navigate(`/edit/${id}`);
+    navigate(`/edit/${ id }`);
   };
 
   return (
@@ -33,7 +33,7 @@ function Book(props) {
       className="card"
       id={id}
     >
-      <img className="card__left" src={img === null ? defaultImg : img} alt="avatar"></img>
+      <img className="card__left" src={img === null ? defaultImgPath : img} alt="avatar"></img>
       <div className="card__right">
         <p className="card__data">Book Title: <span className="card__name">{title}</span></p>
         <p className="card__data">Author: <span className="card__name">{author}</span></p>
