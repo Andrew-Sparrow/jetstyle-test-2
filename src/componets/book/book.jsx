@@ -33,7 +33,7 @@ function Book(props) {
       className="card"
       id={id}
     >
-      <img className="card__left" src={img === null ? defaultImgPath : img} alt="avatar"></img>
+      <img className="card__left" src={!img ? defaultImgPath : img} alt="avatar"></img>
       <div className="card__right">
         <p className="card__data">Book Title: <span className="card__name">{title}</span></p>
         <p className="card__data">Author: <span className="card__name">{author}</span></p>

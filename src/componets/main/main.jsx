@@ -19,7 +19,7 @@ function Main() {
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Books</h1>
       {
-        books.length === 0
+        books?.length === 0
           ? <MainEmpty />
           : (
             <div className="books">
@@ -27,7 +27,7 @@ function Main() {
                 <section className="books__items items">
                   <h2 className="visually-hidden">Books</h2>
                   <NewItemButton />
-                  <b className="items__found">{books.length} books </b>
+                  <b className="items__found">{books?.length} books </b>
                   <BookList
                     items={books}
                     // first page number

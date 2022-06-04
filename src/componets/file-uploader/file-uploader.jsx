@@ -4,24 +4,21 @@ import { useState, useRef } from 'react'
 const getBase64 = (file) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
     reader.readAsDataURL(file);
+    reader.onload = (evt) => {
+      resolve(reader.result)
+    };
+    reader.onerror = error => reject(error);
   });
 }
-
-const imageUpload = (imageFile) => {
-  getBase64(imageFile).then(base64 => {
-    localStorage["fileBase64"] = base64;
-  });
-};
 
 const FileUploader = (props) => {
   const { handleFileError, handleAddPicture } = props;
 
   const hiddenFileInput = useRef(null);
 
-  const [image, setImageBlob] = useState();
+  const [imageBlob, setImageBlob] = useState();
+  const [imageBase64, setImageBase64] = useState();
   const [file, setFile] = useState();
 
   const handleClick = (evt) => {
@@ -29,6 +26,12 @@ const FileUploader = (props) => {
   };
 
   let errorsList = [];
+
+  const imageUpload = (imageFile) => {
+    getBase64(imageFile).then((base64) => {
+      setImageBase64(base64);
+    });
+  };
 
   const handleChange = event => {
     const fileUploaded = event.target.files[0];
@@ -63,8 +66,8 @@ const FileUploader = (props) => {
   };
 
   useEffect(() => {
-    handleAddPicture(image);
-  }, [image])
+    handleAddPicture(imageBase64);
+  }, [imageBase64])
 
   return (
     <>
@@ -74,9 +77,8 @@ const FileUploader = (props) => {
       >
         Upload a file
       </div>
-      {image && <img src={image} alt="Cover" />}
-      {/* {localStorage["fileBase64"] && <img src={localStorage["fileBase64"]} alt="Cover" />} */}
-      {image && <p><b>Selected image: {file.name}</b></p>}
+      {imageBlob && <img src={imageBlob} alt="Cover" />}
+      {imageBlob && <p><b>Selected image: {file.name}</b></p>}
       <input
         type="file"
         ref={hiddenFileInput}

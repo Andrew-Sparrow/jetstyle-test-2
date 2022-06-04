@@ -18,8 +18,8 @@ function BookList(props) {
     activeBooks
   } = props;
 
-  const selectedItemsOnFirstPage = items.slice(0, ITEMS_PER_PAGE);
-  const pagesTotalAmount = Math.ceil(items.length / ITEMS_PER_PAGE);
+  const selectedItemsOnFirstPage = items?.slice(0, ITEMS_PER_PAGE);
+  const pagesTotalAmount = Math.ceil(items?.length / ITEMS_PER_PAGE);
 
   let slicedItems = selectedItemsOnFirstPage;
 
@@ -63,7 +63,7 @@ function BookList(props) {
   return (
     <Fragment>
       <ul className="books__items-list">
-        {state.slicedItems.map((book) => (
+        {state.slicedItems?.map((book) => (
           <Book
             key={book.id}
             id={book.id}
