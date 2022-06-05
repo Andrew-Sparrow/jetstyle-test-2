@@ -1,32 +1,31 @@
-# Getting Started with Create React App
+# Test task for YetStyle
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##### Project name:
+###Books
+----------
 
-## Available Scripts
+CRUD applications
 
-In the project directory, you can run:
+#### Used technologies
+- React
+- Redux
+- react-router-dom
+- Jest
+- @testing-library/react
 
-### `npm start`
+#### Project features:
+- Display list of books
+- Ability to create new book
+- Ability to remove book
+- Ability to edit book
+- Ability for adding picture in base64 format
+- Ability to store data in localStorage
+- Pagination
+- Form validation
+- 404 page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Alt text](public/assets/screenshot.png?raw=true "Title")
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 
