@@ -19,10 +19,5 @@ export const deleteItemAction = createAction(
 
 export const editItemAction = createAction(
   ActionType.EDIT_ITEM,
-  (id) => ({ payload: id })
-);
-
-export const redirectToRoute = createAction(
-  ActionType.REDIRECT_TO_ROUTE,
-  (url) => ({ payload: url })
+  (editedBook) => ({ payload: editedBook })
 );
