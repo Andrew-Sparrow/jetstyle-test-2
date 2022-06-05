@@ -2,7 +2,7 @@
   "name": "jetstyle-test-2",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://andrew-sparrow.github.io/jetstyle-test-2",
+  "homepage": "/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
     "@testing-library/jest-dom": "^5.16.4",

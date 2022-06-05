@@ -12,6 +12,12 @@ const getBase64 = (file) => {
   });
 }
 
+function isFileImage(file) {
+  const acceptedImageTypes = ['image/jpg', 'image/jpeg', 'image/png'];
+
+  return file && acceptedImageTypes.includes(file['type']);
+}
+
 const FileUploader = (props) => {
   const { handleFileError, handleAddPicture } = props;
 
@@ -36,21 +42,13 @@ const FileUploader = (props) => {
   const handleChange = event => {
     const fileUploaded = event.target.files[0];
 
-    // не лучший пример для условий, но я не придумал лучшего сравнения
-    // проверка на размер файла и на тип
-    if (fileUploaded?.size > (1024 * 1000) ||
-      (fileUploaded?.type !== "image/jpg"
-        && fileUploaded?.type !== "image/png"
-        && fileUploaded?.type !== "image/jpeg"
-      )) {
+    if (fileUploaded?.size > (1024 * 1000) || !isFileImage(fileUploaded))
+    {
       if (fileUploaded?.size > (1024 * 1000)) {
         errorsList.push("File size cannot exceed more than 1MB");
       }
 
-      if (fileUploaded?.type !== "image/jpeg"
-        && fileUploaded?.type !== "image/png"
-        && fileUploaded?.type !== "image/jpeg"
-      ) {
+      if (!isFileImage(fileUploaded)) {
         errorsList.push("File type should be 'png' or 'jpg' or 'jpeg'");
       }
 
