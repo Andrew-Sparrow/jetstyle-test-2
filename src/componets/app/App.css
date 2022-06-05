@@ -311,7 +311,7 @@ img {
   margin-top: 2px;
   margin-right: 2px;
   padding-top: 29px;
-  padding-bottom: 7px;
+  padding-bottom: 50px;
   padding-left: 9px;
   overflow-y: auto
 }
@@ -600,7 +600,7 @@ img {
 
 .press-button {
   display: block;
-  width: 90%;
+  width: 97%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
