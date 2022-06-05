@@ -505,3 +505,12 @@ img {
   cursor: pointer;
   background-color: #4386ce;
 }
+
+.not-found {
+  margin-bottom: 30px;
+}
+
+.not-found__link {
+  color: rgb(31, 50, 219);
+  text-decoration: underline;
+}
