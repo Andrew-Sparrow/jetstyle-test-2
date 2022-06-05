@@ -1,4 +1,4 @@
-# Test task for YetStyle
+# Test task for JetStyle
 
 ##### Project name:
 ###Books
