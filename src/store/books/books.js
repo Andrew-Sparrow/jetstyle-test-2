@@ -24,9 +24,8 @@ const books = createReducer(initialState, (builder) => {
       localStorage.setItem('books', JSON.stringify(newBookList))
     })
     .addCase(addItemAction, (state, action) => {
-      const newBookList = [action.payload, ...state.books];
-      state.books = newBookList;
-      localStorage.setItem('books', JSON.stringify(newBookList))
+      state.books.push(action.payload);
+      localStorage.setItem('books', JSON.stringify(state.books))
     })
 });
 
