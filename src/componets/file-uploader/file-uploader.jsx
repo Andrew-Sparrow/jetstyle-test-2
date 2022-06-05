@@ -1,22 +1,7 @@
 import { useEffect } from 'react';
-import { useState, useRef } from 'react'
+import { useState, useRef } from 'react';
+import Util from '../../util/util'
 
-const getBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = (evt) => {
-      resolve(reader.result)
-    };
-    reader.onerror = error => reject(error);
-  });
-}
-
-function isFileImage(file) {
-  const acceptedImageTypes = ['image/jpg', 'image/jpeg', 'image/png'];
-
-  return file && acceptedImageTypes.includes(file['type']);
-}
 
 const FileUploader = (props) => {
   const { handleFileError, handleAddPicture } = props;
@@ -34,7 +19,7 @@ const FileUploader = (props) => {
   let errorsList = [];
 
   const imageUpload = (imageFile) => {
-    getBase64(imageFile).then((base64) => {
+    Util.getBase64(imageFile).then((base64) => {
       setImageBase64(base64);
     });
   };
@@ -42,13 +27,13 @@ const FileUploader = (props) => {
   const handleChange = event => {
     const fileUploaded = event.target.files[0];
 
-    if (fileUploaded?.size > (1024 * 1000) || !isFileImage(fileUploaded))
+    if (fileUploaded?.size > (1024 * 1000) || !Util.isFileImage(fileUploaded))
     {
       if (fileUploaded?.size > (1024 * 1000)) {
         errorsList.push("File size cannot exceed more than 1MB");
       }
 
-      if (!isFileImage(fileUploaded)) {
+      if (!Util.isFileImage(fileUploaded)) {
         errorsList.push("File type should be 'png' or 'jpg' or 'jpeg'");
       }
 
