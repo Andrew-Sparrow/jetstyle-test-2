@@ -18,8 +18,10 @@ function BookList(props) {
     activeBooks
   } = props;
 
-  const selectedItemsOnFirstPage = items?.slice(0, ITEMS_PER_PAGE);
-  const pagesTotalAmount = Math.ceil(items?.length / ITEMS_PER_PAGE);
+  const newItems = items ?? [];
+
+  const selectedItemsOnFirstPage = newItems?.slice(0, ITEMS_PER_PAGE);
+  const pagesTotalAmount = Math.ceil(newItems?.length / ITEMS_PER_PAGE);
 
   let slicedItems = selectedItemsOnFirstPage;
 
@@ -55,7 +57,7 @@ function BookList(props) {
 
   const pageNumberClickHandler = (dataPagination) => {
     let offset = Math.ceil(dataPagination.selected * ITEMS_PER_PAGE);
-    slicedItems = items.slice(offset, offset + ITEMS_PER_PAGE);
+    slicedItems = newItems.slice(offset, offset + ITEMS_PER_PAGE);
     dispatch({ type: 'changePageNumber', payload: dataPagination.selected });
     dispatch({ type: 'changeSlicedItems', payload: slicedItems });
   };
@@ -76,7 +78,7 @@ function BookList(props) {
         ))}
       </ul>
       {/* comparison was added to don't show pagination if there are too little amount of items in list */}
-      {items.length > ITEMS_PER_PAGE && <Pagination
+      {newItems.length > ITEMS_PER_PAGE && <Pagination
         pageCount={pagesTotalAmount}
         onPageNumberClick={pageNumberClickHandler}
         forcePage={state.pageNumber}

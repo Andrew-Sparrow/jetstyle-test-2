@@ -5,6 +5,7 @@ export const ActionType = {
   EDIT_ITEM: 'books/edit',
   DELETE_ITEM: 'books/delete',
   REDIRECT_TO_ROUTE: 'books/redirectToRoute',
+  SET_ITEMS: 'books/set_items',
 };
 
 export const addItemAction = createAction(
@@ -20,4 +21,9 @@ export const deleteItemAction = createAction(
 export const editItemAction = createAction(
   ActionType.EDIT_ITEM,
   (editedBook) => ({ payload: editedBook })
+);
+
+export const setItemsAction = createAction(
+  ActionType.SET_ITEMS,
+  (items) => ({ payload: items })
 );
