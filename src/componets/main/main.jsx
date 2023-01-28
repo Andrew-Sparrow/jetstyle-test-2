@@ -30,8 +30,7 @@ function Main() {
                   <b className="items__found">{books?.length} books </b>
                   <BookList
                     items={books}
-                    // first page number
-                    initialPageNumber={0}
+                    initialPageNumber={0} // first page number
                     activeBooks={books}
                   />
                 </section>
