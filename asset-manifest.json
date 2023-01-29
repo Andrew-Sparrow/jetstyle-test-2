@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/jetstyle-test-2/static/css/main.8e25e203.css",
+    "main.js": "/jetstyle-test-2/static/js/main.bc0e3397.js",
+    "index.html": "/jetstyle-test-2/index.html",
+    "main.8e25e203.css.map": "/jetstyle-test-2/static/css/main.8e25e203.css.map",
+    "main.bc0e3397.js.map": "/jetstyle-test-2/static/js/main.bc0e3397.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8e25e203.css",
+    "static/js/main.bc0e3397.js"
+  ]
+}
