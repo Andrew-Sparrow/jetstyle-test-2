@@ -32,6 +32,7 @@ const BookForm = () => {
 
   let navigate = useNavigate();
 
+  // add id for new book
   const nanoID = customAlphabet('1234567890', 5)
 
   let book = {

@@ -1,5 +1,4 @@
-// import React, {useState} from 'react';
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer } from 'react';
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
@@ -7,15 +6,12 @@ import Book from '../book/book';
 import CardProp from '../book/book.prop';
 import Pagination from '../pagination/pagination';
 
-const FIRST_PAGE_NUMBER = 0; // the initialPageNumber starts with zero
 const ITEMS_PER_PAGE = 3;
-let prevBooks = [];
 
 function BookList(props) {
   const {
     items,
     initialPageNumber,
-    activeBooks
   } = props;
 
   const newItems = items ?? [];
@@ -44,16 +40,6 @@ function BookList(props) {
   }
 
   const [state, dispatch] = useReducer(reducer, initialPageNumber, init);
-
-  useEffect(() => {
-    if (prevBooks !== activeBooks) {
-      dispatch({ type: 'changeSlicedItems', payload: [] });
-      dispatch({ type: 'changeSlicedItems', payload: slicedItems });
-      dispatch({ type: 'changePageNumber', payload: FIRST_PAGE_NUMBER });
-    }
-    prevBooks = activeBooks;
-  }, [slicedItems, activeBooks]);
-
 
   const pageNumberClickHandler = (dataPagination) => {
     let offset = Math.ceil(dataPagination.selected * ITEMS_PER_PAGE);
@@ -90,8 +76,6 @@ function BookList(props) {
 BookList.propTypes = {
   items: PropTypes.arrayOf(CardProp),
   initialPageNumber: PropTypes.number,
-  activeState: PropTypes.array,
-  onListItemHover: PropTypes.func,
 };
 
 export default BookList;

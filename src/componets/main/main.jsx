@@ -27,7 +27,6 @@ function Main() {
                   <BookList
                     items={books}
                     initialPageNumber={0} // first page number
-                    activeBooks={books}
                   />
                 </section>
               </div>
