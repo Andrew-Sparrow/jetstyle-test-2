@@ -2,6 +2,9 @@
 
 ##### Project name:
 ### Books
+
+### Live version on GitHubPages
+https://andrew-sparrow.github.io/jetstyle-test-2/
 ----------
 
 CRUD applications
