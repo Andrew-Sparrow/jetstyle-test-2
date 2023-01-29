@@ -1,10 +1,10 @@
 # Test task for JetStyle
 
 ##### Project name:
-### Books
+## Books
 
-### Live version on GitHubPages
-https://andrew-sparrow.github.io/jetstyle-test-2/
+##### Live version on GitHubPages
+##### https://andrew-sparrow.github.io/jetstyle-test-2/
 ----------
 
 CRUD applications
